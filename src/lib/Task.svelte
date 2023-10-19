@@ -17,7 +17,7 @@
         </CardTitle>
         <Tooltip target="task-icon-{id}" placement="top">{task.priority.label} Priority</Tooltip>
         <CardSubtitle>{task.desc}</CardSubtitle>
-        Added {moment(task.added).format("MMMM Do, Y @ hh:mma")}
+        Added {moment(task.addedDate).format("MMMM Do, Y @ hh:mma")}
         {#if task.completionDate}
             <br/>Completed {moment(task.completionDate).format("MMMM Do, Y @ hh:mma")}
         {/if}

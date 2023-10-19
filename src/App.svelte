@@ -41,6 +41,7 @@
             name: curName,
             desc: curDesc,
             priority: curPriority,
+            addedDate: Date.now(),
             completed: false,
             completionDate: null
         };
