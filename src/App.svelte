@@ -6,7 +6,7 @@
         FormGroup,
         Input,
         Label, Modal, ModalBody, ModalFooter,
-        Offcanvas, Row
+        Offcanvas
     } from "sveltestrap";
     import Task from "./lib/Task.svelte";
     import { v4 as uuid } from "uuid";
@@ -41,7 +41,6 @@
             name: curName,
             desc: curDesc,
             priority: curPriority,
-            added: Date.now(),
             completed: false,
             completionDate: null
         };

@@ -1,5 +1,5 @@
 <script>
-    import {Button, Card, CardBody, CardSubtitle, CardTitle, Icon, Label, Tooltip} from "sveltestrap";
+    import {Button, Card, CardBody, CardSubtitle, CardTitle, Icon, Tooltip} from "sveltestrap";
     import moment from "moment";
     import {createEventDispatcher} from "svelte";
 
