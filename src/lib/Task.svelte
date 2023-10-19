@@ -1,5 +1,5 @@
 <script>
-    import {Button, Card, CardBody, CardHeader, CardSubtitle, CardTitle, Icon, Label, Tooltip} from "sveltestrap";
+    import {Button, Card, CardBody, CardSubtitle, CardTitle, Icon, Label, Tooltip} from "sveltestrap";
     import moment from "moment";
     import {createEventDispatcher} from "svelte";
 
@@ -9,7 +9,7 @@
     export let id;
 </script>
 
-<Card id="card-{id}" class={task.completed ? "card-complete" : ""}>
+<Card id="card-{id}" class={task.completed ? "card-complete" : "" + task.priority.label === "Critical" ? "card-critical" : ""}>
     <CardBody style="position:relative;">
         <a href="#" on:click={dispatch("delete", {task:task})}><Icon name="trash3-fill" class="card-close" /></a>
         <CardTitle>
@@ -18,6 +18,9 @@
         <Tooltip target="task-icon-{id}" placement="top">{task.priority.label} Priority</Tooltip>
         <CardSubtitle>{task.desc}</CardSubtitle>
         Added {moment(task.added).format("MMMM Do, Y @ hh:mma")}
+        {#if task.completionDate}
+            <br/>Completed {moment(task.completionDate).format("MMMM Do, Y @ hh:mma")}
+        {/if}
         <Button color="primary" class="my-2" style="float:right;" on:click={() => dispatch("mark", {task:task})}>Mark {task.completed ? "incomplete" : "complete"}</Button>
     </CardBody>
 </Card>

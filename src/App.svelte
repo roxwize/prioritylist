@@ -1,13 +1,11 @@
 <script>
     import {
         Button,
-        ButtonGroup,
-        ButtonToolbar, Col,
         Container, Dropdown, DropdownItem, DropdownMenu, DropdownToggle,
         Form,
         FormGroup,
         Input,
-        InputGroup, InputGroupText, Label, Modal, ModalBody, ModalFooter,
+        Label, Modal, ModalBody, ModalFooter,
         Offcanvas, Row
     } from "sveltestrap";
     import Task from "./lib/Task.svelte";
@@ -16,8 +14,8 @@
 
     const PRIORITIES = {
         Low: { id: 0, label: "Low", color: "secondary", icon: "exclamation-circle" },
-        Medium: { id: 1, label: "Medium", color: "success", icon: "exclamation-circle-fill" },
-        High: { id: 2, label: "High", color: "warning", icon: "exclamation-circle-fill" },
+        Medium: { id: 1, label: "Medium", color: "warning", icon: "exclamation-circle-fill" },
+        High: { id: 2, label: "High", color: "danger", icon: "exclamation-circle-fill" },
         Critical: { id: 3, label: "Critical", color: "danger", icon: "exclamation-diamond-fill" }
     }
 
@@ -43,7 +41,9 @@
             name: curName,
             desc: curDesc,
             priority: curPriority,
-            completed: false
+            added: Date.now(),
+            completed: false,
+            completionDate: null
         };
         addMenuOpen = false;
         resetCurTask();
@@ -52,10 +52,12 @@
     const markTask = (id, task) => {
         if (task.completed) {
             task.completed = false;
+            task.completionDate = null;
             tasks.incomplete[id] = task;
             delete tasks.complete[id];
         } else {
             task.completed = true;
+            task.completionDate = Date.now();
             tasks.complete[id] = task;
             delete tasks.incomplete[id];
         }

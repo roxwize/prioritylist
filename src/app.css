@@ -7,6 +7,9 @@ div.card-container {
     grid-gap: 0.5em;
 }
 
+.card-critical {
+    background-color: var(--bs-danger-bg-subtle);
+}
 .card-complete {
     opacity: 0.7;
 }
