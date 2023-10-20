@@ -41,7 +41,7 @@
             name: curName,
             desc: curDesc,
             priority: curPriority,
-            addedDate: Date.now(),
+            addedDate: Math.floor(Date.now()/1000),
             completed: false,
             completionDate: null
         };
@@ -57,7 +57,7 @@
             delete tasks.complete[id];
         } else {
             task.completed = true;
-            task.completionDate = Date.now();
+            task.completionDate = Math.floor(Date.now()/1000);
             tasks.complete[id] = task;
             delete tasks.incomplete[id];
         }
