@@ -17,9 +17,9 @@
         </CardTitle>
         <Tooltip target="task-icon-{id}" placement="top">{task.priority.label} Priority</Tooltip>
         <CardSubtitle>{task.desc}</CardSubtitle>
-        Added {moment(task.addedDate).format("MMMM Do, Y @ hh:mma")}
+        Added {moment(task.addedDate*1000).format("MMMM Do, Y @ hh:mma")}
         {#if task.completionDate}
-            <br/>Completed {moment(task.completionDate).format("MMMM Do, Y @ hh:mma")}
+            <br/>Completed {moment(task.completionDate*1000).format("MMMM Do, Y @ hh:mma")}
         {/if}
         <Button color="primary" class="my-2" style="float:right;" on:click={() => dispatch("mark", {task:task})}>Mark {task.completed ? "incomplete" : "complete"}</Button>
     </CardBody>
